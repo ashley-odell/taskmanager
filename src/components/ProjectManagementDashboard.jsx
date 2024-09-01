@@ -189,7 +189,7 @@ const teamData = [
         blocked: false,
         dueDate: getDateNDaysFromNow(26),
         timeEstimate: "4h",
-      }
+      },
     ],
   },
   {
@@ -228,7 +228,7 @@ const teamData = [
         blocked: false,
         dueDate: getDateNDaysFromNow(8),
         timeEstimate: "4h",
-      }
+      },
     ],
   },
   {
@@ -388,21 +388,21 @@ const ProjectSelectionModal = ({
   </div>
 );
 
-const Settings = ({ githubSettings, setGithubSettings }) => {
-  const [apiKey, setApiKey] = useState(githubSettings.apiKey || "");
-  const [orgName, setOrgName] = useState(githubSettings.orgName || "");
+const Settings = ({ gitlabSettings, setGitlabSettings }) => {
+  const [apiKey, setApiKey] = useState(gitlabSettings.apiKey || "");
+  const [orgName, setOrgName] = useState(gitlabSettings.orgName || "");
 
   const handleSave = () => {
-    setGithubSettings({ apiKey, orgName });
+    setGitlabSettings({ apiKey, orgName });
     alert("Settings Saved!");
   };
 
   return (
     <div className="settings-container p-4">
-      <h2 className="text-2xl font-bold mb-4">GitHub Integration Settings</h2>
+      <h2 className="text-2xl font-bold mb-4">GitLab Integration Settings</h2>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          GitHub API Key:
+          GitLab API Key:
         </label>
         <input
           type="text"
@@ -413,7 +413,7 @@ const Settings = ({ githubSettings, setGithubSettings }) => {
       </div>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          GitHub Organization or Username:
+          Gitlab Organization or Username:
         </label>
         <input
           type="text"
@@ -434,13 +434,13 @@ const Settings = ({ githubSettings, setGithubSettings }) => {
 
 // Main component
 const ProjectManagementDashboard = () => {
-  const [githubSettings, setGithubSettings] = useState({
+  const [gitlabSettings, setGitlabSettings] = useState({
     apiKey: "",
     orgName: "",
   });
   const [activeTab, setActiveTab] = useState("overview");
   const [selectedProjects, setSelectedProjects] = useState(
-    allProjects.map((p) => p.id)
+    allProjects.map((p) => p.id),
   );
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [dateRange, setDateRange] = useState({ start: null, end: null });
@@ -449,7 +449,7 @@ const ProjectManagementDashboard = () => {
     setSelectedProjects((prev) =>
       prev.includes(projectId)
         ? prev.filter((id) => id !== projectId)
-        : [...prev, projectId]
+        : [...prev, projectId],
     );
   };
 
@@ -474,7 +474,7 @@ const ProjectManagementDashboard = () => {
 
   const renderOverview = () => {
     const filteredProjects = allProjects.filter((p) =>
-      selectedProjects.includes(p.id)
+      selectedProjects.includes(p.id),
     );
 
     return (
@@ -520,9 +520,8 @@ const ProjectManagementDashboard = () => {
 
   const getProjectNameById = (projectId) => {
     const project = allProjects.find((p) => p.id === projectId);
-    return project ? project.name : 'Unknown Project';
+    return project ? project.name : "Unknown Project";
   };
-
 
   const renderTeamChart = (filteredTeamData) => (
     <div className="mb-8">
@@ -584,7 +583,9 @@ const ProjectManagementDashboard = () => {
                 </a>
               </td>
               <td className="p-2">{getProjectNameById(issue.projectId)}</td>
-              <td className={`text-center p-2 ${issue.blocked ? "text-red-600 font-bold" : ""}`}>
+              <td
+                className={`text-center p-2 ${issue.blocked ? "text-red-600 font-bold" : ""}`}
+              >
                 {issue.blocked ? "⚠️ Yes" : "No"}
               </td>
               <td className="text-right p-2">{issue.dueDate}</td>
@@ -609,7 +610,10 @@ const ProjectManagementDashboard = () => {
         {renderTeamChart(filteredTeamData)}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredTeamData.map((member) =>
-            renderTeamMemberCard(member, filterIssuesByDateRange(member.issues))
+            renderTeamMemberCard(
+              member,
+              filterIssuesByDateRange(member.issues),
+            ),
           )}
         </div>
       </div>
@@ -651,8 +655,8 @@ const ProjectManagementDashboard = () => {
       {activeTab === "team" && renderTeam()}
       {activeTab === "settings" && (
         <Settings
-          githubSettings={githubSettings}
-          setGithubSettings={setGithubSettings}
+          gitlabSettings={gitlabSettings}
+          setGitlabSettings={setGitlabSettings}
         />
       )}
 
