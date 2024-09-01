@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Updated Color Palette */
+:root {
+  --primary-color: #006494; /* Dark Blue */
+  --secondary-color: #114B5F; /* Dark Turquoise */
+  --accent-color: #059c8f; /* Bright Aqua */
+  --background-color: #F5F5F5; /* Light Grey */
+  --card-background: #FFFFFF; /* White */
+  --text-color-dark: #000000; /* Dark Text */
+  --text-color-light: #FFFFFF; /* Light Text */
+
+  /* Balanced project colors with improved readability */
+  --color-1: #005F73; /* Deep Sea Blue */
+  --color-2: #00738C; /* Ocean Blue */
+  --color-3: #0088A1; /* Cool Aqua */
+  --color-4: #009BB6; /* Calm Cyan */
+  --color-5: #00AEC8; /* Soft Turquoise */
+  --color-6: #00C1D9; /* Soft Aqua */
+  --color-7: #00D3E5; /* Light Turquoise */
+  --color-8: #00E4F0; /* Soft Cyan */
+  --color-9: #00F4F8; /* Soft Light Aqua */
+  --color-10: #17A2B8; /* Sky Blue */
+  --color-11: #2D9AC6; /* Brighter Sky Blue */
+  --color-12: #3B91C4; /* Strong Blue */
+  --color-13: #4A88C1; /* Soft Blue */
+  --color-14: #588FC3; /* Light Blue */
+  --color-15: #6696C4; /* Pale Blue */
+  --color-16: #749DC6; /* Very Light Blue */
+  --color-17: #83A4C8; /* Soft Light Aqua */
+  --color-18: #91ABC9; /* Very Light Aqua */
+  --color-19: #A0B2CB; /* Soft Grayish Blue */
+  --color-20: #AEB9CD; /* Light Grayish Blue */
+}
+
+
+
+
+/* General Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color-dark);
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--text-color-dark);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.lg\\:grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  color: var(--text-color-dark);
+}
+
+.card p {
+  color: #555;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--text-color-dark);
+  color: var(--text-color-light);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  color: var(--text-color-light);
+  padding: 10px 15px;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color-dark);
+}
+
+/* Buttons and Tabs */
+.button, .tab {
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 700;
+}
+
+.button:hover, .tab:hover {
+  background-color: var(--secondary-color);
+}
+
+.tab.active {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+td {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.odd\\:bg-white {
+  background-color: #ffffff;
+}
+
+.even\\:bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+/* Date Input Styles */
+input[type="date"] {
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--text-color-dark);
+  font-size: 16px;
+}
+
+input[type="date"]:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* Additional button style */
+button {
+  margin: 0 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button.secondary {
+  background-color: var(--secondary-color);
+}
+
+button.secondary:hover {
+  background-color: #005080;
+}
+
+/* Chart Styles */
+.recharts-bar-rectangle {
+  stroke-width: 2;
+  stroke: var(--card-background);
+}
+
+/* Custom Classes Based on JSX Structure */
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.border {
+  border: 1px solid #cbd5e0;
+}
+
+.rounded {
+  border-radius: 0.375rem;
+}
+
+.bg-blue-500 {
+  background-color: var(--accent-color);
+}
+
+.hover\\:bg-blue-700:hover {
+  background-color: var(--secondary-color);
+}
+
+.text-white {
+  color: var(--text-color-light);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
